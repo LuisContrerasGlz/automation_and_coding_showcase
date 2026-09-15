@@ -370,4 +370,86 @@ export const problems = [
       { args: ["Programming"], expected: ["o", "a", "i"] },
     ],
   },
+  {
+    id: "remove-spaces-replace",
+    group: "Remove Spaces",
+    title: "Remove Spaces (using replace)",
+    description: "Write a function that takes a string and returns a copy of it with all space characters removed.",
+    constraintNote: null,
+    functionName: "remove_spaces",
+    starterCode:
+`def remove_spaces(s):
+    """Return s with all spaces removed."""
+    pass
+`,
+    tests: [
+      { args: ["   Hello, World!   "], expected: "Hello,World!" },
+      { args: ["a b c"], expected: "abc" },
+      { args: [""], expected: "" },
+      { args: ["NoSpacesHere"], expected: "NoSpacesHere" },
+      { args: ["   "], expected: "" },
+    ],
+  },
+  {
+    id: "remove-spaces-split-join",
+    group: "Remove Spaces",
+    title: "Remove Spaces (split and join)",
+    description: "Write a function that takes a string and returns a copy of it with all space characters removed.",
+    constraintNote: "Use str.split() and str.join() — not str.replace().",
+    functionName: "remove_spaces_split_join",
+    starterCode:
+`def remove_spaces_split_join(s):
+    """Return s with all spaces removed, using split() and join()."""
+    pass
+`,
+    tests: [
+      { args: ["   Hello, World!   "], expected: "Hello,World!" },
+      { args: ["a b c"], expected: "abc" },
+      { args: [""], expected: "" },
+      { args: ["NoSpacesHere"], expected: "NoSpacesHere" },
+      { args: ["   "], expected: "" },
+    ],
+  },
+  {
+    id: "remove-spaces-manual",
+    group: "Remove Spaces",
+    title: "Remove Spaces (manual)",
+    description: "Write a function that takes a string and returns a copy of it with all space characters removed.",
+    constraintNote: "Do not use str.replace(), str.split(), or str.strip() — build the result character by character.",
+    functionName: "remove_whitespace",
+    starterCode:
+`def remove_whitespace(s):
+    """Return s with all spaces removed, without using replace/split/strip."""
+    pass
+`,
+    tests: [
+      { args: ["   Hello, World!   "], expected: "Hello,World!" },
+      { args: ["a b c"], expected: "abc" },
+      { args: [""], expected: "" },
+      { args: ["NoSpacesHere"], expected: "NoSpacesHere" },
+      { args: ["   "], expected: "" },
+    ],
+  },
+  {
+    id: "find-longest-word",
+    group: "Find Longest Word",
+    title: "Find Longest Word in a Sentence",
+    description:
+      "Write a function that takes a sentence (a string of words separated by spaces) and returns " +
+      "the longest word in it. If there is a tie, return whichever of the tied words appears first.",
+    constraintNote: null,
+    functionName: "find_longest_word",
+    starterCode:
+`def find_longest_word(sentence):
+    """Return the longest word in sentence; on a tie, return the first one found."""
+    pass
+`,
+    tests: [
+      { args: ["This is a sample sentence with some long words like extraordinary."], expected: "extraordinary." },
+      { args: ["The quick brown fox"], expected: "quick" },
+      { args: [""], expected: "" },
+      { args: ["single"], expected: "single" },
+      { args: ["a bb ccc dddd"], expected: "dddd" },
+    ],
+  },
 ];
