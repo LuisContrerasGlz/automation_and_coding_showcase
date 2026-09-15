@@ -452,4 +452,26 @@ export const problems = [
       { args: ["a bb ccc dddd"], expected: "dddd" },
     ],
   },
+  {
+    id: "move-zeros",
+    group: "Move Zeros",
+    title: "Move Zeros to the End",
+    description:
+      "Write a function that takes a list of numbers and returns a new list with all the zeros " +
+      "moved to the end, while keeping the relative order of the non-zero numbers unchanged.",
+    constraintNote: null,
+    functionName: "move_zeros",
+    starterCode:
+`def move_zeros(nums):
+    """Return nums with all zeros moved to the end, preserving the order of non-zero values."""
+    pass
+`,
+    tests: [
+      { args: [[0, 1, 0, 3, 12]], expected: [1, 3, 12, 0, 0] },
+      { args: [[0, 0, 0]], expected: [0, 0, 0] },
+      { args: [[1, 2, 3]], expected: [1, 2, 3] },
+      { args: [[]], expected: [] },
+      { args: [[4, 0, 5, 0, 0, 6]], expected: [4, 5, 6, 0, 0, 0] },
+    ],
+  },
 ];
