@@ -8,6 +8,8 @@ def count_vowels(s):
             count += 1
     return count
 
+print(count_vowels("hello world"))
+
 # find vowels 
 def find_vowels(s):
     vowelstofind = []
@@ -18,3 +20,5 @@ def find_vowels(s):
             vowelstofind.append(char)
 
     return vowelstofind
+
+print(find_vowels("hello world"))
