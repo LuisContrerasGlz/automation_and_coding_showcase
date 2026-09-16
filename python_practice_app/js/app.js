@@ -7,8 +7,10 @@ let worker = null;
 let workerReady = null;
 let currentProblem = null;
 let editorCreated = false;
+const groupDetailsByName = new Map();
 
 const sidebarEl = document.getElementById("sidebar");
+const exerciseCountEl = document.getElementById("exercise-count");
 const titleEl = document.getElementById("problem-title");
 const descriptionEl = document.getElementById("problem-description");
 const constraintEl = document.getElementById("problem-constraint");
@@ -17,6 +19,11 @@ const resultsEl = document.getElementById("results");
 const runBtn = document.getElementById("run-btn");
 const resetBtn = document.getElementById("reset-btn");
 const statusEl = document.getElementById("status");
+
+function setStatus(text, kind) {
+  statusEl.textContent = text;
+  statusEl.className = kind ? `status ${kind}` : "status";
+}
 
 function createWorker() {
   const w = new Worker(new URL("./pyodide-worker.js", import.meta.url), { type: "module" });
@@ -36,10 +43,10 @@ function initWorker() {
   const { w, ready } = createWorker();
   worker = w;
   workerReady = ready;
-  statusEl.textContent = "Loading Python runtime...";
+  setStatus("Loading Python runtime…", "loading");
   runBtn.disabled = true;
   ready.then(() => {
-    statusEl.textContent = "Ready";
+    setStatus("Ready", "ready");
     runBtn.disabled = false;
   });
 }
@@ -51,9 +58,13 @@ function renderSidebar() {
     groups.get(problem.group).push(problem);
   }
   sidebarEl.innerHTML = "";
+  groupDetailsByName.clear();
+  if (exerciseCountEl) {
+    exerciseCountEl.textContent = `${problems.length} exercises`;
+  }
   for (const [groupName, items] of groups) {
     const details = document.createElement("details");
-    details.open = true;
+    details.open = false;
     const summary = document.createElement("summary");
     summary.textContent = groupName;
     details.appendChild(summary);
@@ -71,6 +82,7 @@ function renderSidebar() {
     }
     details.appendChild(list);
     sidebarEl.appendChild(details);
+    groupDetailsByName.set(groupName, details);
   }
 }
 
@@ -94,6 +106,11 @@ function selectProblem(id) {
   document.querySelectorAll(".exercise-btn").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.id === id);
   });
+
+  // Accordion: only the group containing the selected exercise stays open.
+  for (const [groupName, details] of groupDetailsByName) {
+    details.open = groupName === problem.group;
+  }
 }
 
 function resetCurrent() {
@@ -129,7 +146,7 @@ function renderResults({ results, timeout }) {
 
     const header = document.createElement("div");
     header.className = "test-case-header";
-    header.textContent = `Test ${i + 1}: ${r.passed ? "PASS" : "FAIL"}`;
+    header.textContent = `${r.passed ? "✓" : "✗"} Test ${i + 1}: ${r.passed ? "PASS" : "FAIL"}`;
     item.appendChild(header);
 
     if (!r.passed) {
@@ -160,7 +177,7 @@ function renderResults({ results, timeout }) {
 async function runTests() {
   if (!currentProblem || !worker) return;
   runBtn.disabled = true;
-  statusEl.textContent = "Running...";
+  setStatus("Running…", "running");
   resultsEl.innerHTML = "";
 
   const userCode = getCode();
@@ -172,7 +189,7 @@ async function runTests() {
     settled = true;
     activeWorker.terminate();
     renderResults({ timeout: true });
-    statusEl.textContent = "Restarting Python runtime...";
+    setStatus("Restarting Python runtime…", "loading");
     initWorker();
   }, RUN_TIMEOUT_MS);
 
@@ -186,7 +203,7 @@ async function runTests() {
     clearTimeout(timeoutId);
     activeWorker.removeEventListener("message", handleMessage);
     renderResults({ results: event.data.results });
-    statusEl.textContent = "Ready";
+    setStatus("Ready", "ready");
     runBtn.disabled = false;
   };
   activeWorker.addEventListener("message", handleMessage);
