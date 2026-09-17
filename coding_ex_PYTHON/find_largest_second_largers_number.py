@@ -14,3 +14,16 @@ def find_largest_and_second_largest(numbers):
             second_largest = num
 
     return largest, second_largest
+
+# Find only the largest number in a list
+def find_largest(numbers):
+    if not numbers:
+        return None  # Return None if the list is empty
+
+    largest = float('-inf')
+
+    for num in numbers:
+        if num > largest:
+            largest = num
+
+    return largest
