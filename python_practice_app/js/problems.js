@@ -289,6 +289,27 @@ export const problems = [
     ],
   },
   {
+    id: "largest-only",
+    group: "Largest / Second Largest",
+    title: "Find Largest Number",
+    description:
+      "Write a function that takes a list of numbers and returns the largest one. If the list is empty, return None.",
+    constraintNote: null,
+    functionName: "find_largest",
+    starterCode:
+`def find_largest(numbers):
+    """Return the largest value in numbers, or None if numbers is empty."""
+    pass
+`,
+    tests: [
+      { args: [[3, 1, 4, 1, 5, 9, 2, 6]], expected: 9 },
+      { args: [[1, 2]], expected: 2 },
+      { args: [[5]], expected: 5 },
+      { args: [[]], expected: null },
+      { args: [[-1, -5, -3]], expected: -1 },
+    ],
+  },
+  {
     id: "palindrome-slicing",
     group: "Palindrome Check",
     title: "Palindrome Check (slicing)",
@@ -472,6 +493,116 @@ export const problems = [
       { args: [[1, 2, 3]], expected: [1, 2, 3] },
       { args: [[]], expected: [] },
       { args: [[4, 0, 5, 0, 0, 6]], expected: [4, 5, 6, 0, 0, 0] },
+    ],
+  },
+  {
+    id: "two-sum-indices",
+    group: "Two Sum",
+    title: "Two Sum (indices)",
+    description:
+      "Write a function that takes a list of numbers and a target value, and returns the indices " +
+      "of the two numbers that add up to target, as [first_index, second_index] in the order they " +
+      "were found while scanning left to right. You may assume exactly one solution exists.",
+    constraintNote: null,
+    functionName: "two_sum",
+    starterCode:
+`def two_sum(nums, target):
+    """Return [i, j], the indices of the two numbers in nums that add up to target."""
+    pass
+`,
+    tests: [
+      { args: [[2, 7, 11, 15], 9], expected: [0, 1] },
+      { args: [[3, 2, 4], 6], expected: [1, 2] },
+      { args: [[3, 3], 6], expected: [0, 1] },
+      { args: [[1, 5, 3, 7], 10], expected: [2, 3] },
+    ],
+  },
+  {
+    id: "two-sum-values",
+    group: "Two Sum",
+    title: "Two Sum (values)",
+    description:
+      "Write a function that takes a list of numbers and a target value, and returns the two " +
+      "numbers that add up to target, as [first_value, second_value] in the order they were found " +
+      "while scanning left to right. You may assume exactly one solution exists.",
+    constraintNote: null,
+    functionName: "two_sum_values",
+    starterCode:
+`def two_sum_values(nums, target):
+    """Return [a, b], the two values in nums that add up to target."""
+    pass
+`,
+    tests: [
+      { args: [[2, 7, 11, 15], 9], expected: [2, 7] },
+      { args: [[3, 2, 4], 6], expected: [2, 4] },
+      { args: [[3, 3], 6], expected: [3, 3] },
+      { args: [[1, 5, 3, 7], 10], expected: [3, 7] },
+    ],
+  },
+  {
+    id: "last-non-repeating-char",
+    group: "Last Non-Repeating Character",
+    title: "Last Non-Repeating Character",
+    description:
+      "Write a function that takes a string and returns the last character (reading left to right) " +
+      "that appears exactly once in the string. Return None if every character repeats.",
+    constraintNote: null,
+    functionName: "last_non_repeating_char",
+    starterCode:
+`def last_non_repeating_char(input_string):
+    """Return the last character in input_string that appears exactly once, or None."""
+    pass
+`,
+    tests: [
+      { args: ["abcdda"], expected: "c" },
+      { args: ["aabbcc"], expected: null },
+      { args: ["stress"], expected: "e" },
+      { args: [""], expected: null },
+      { args: ["x"], expected: "x" },
+    ],
+  },
+  {
+    id: "non-duplicate-words",
+    group: "Non-Duplicate Words",
+    title: "Print Non-Duplicate Words",
+    description:
+      "Write a function that takes a sentence and returns a new sentence containing only the words " +
+      "that appear exactly once, in their original order, joined by single spaces.",
+    constraintNote: null,
+    functionName: "print_non_duplicate_words",
+    starterCode:
+`def print_non_duplicate_words(input_string):
+    """Return a sentence made of only the words from input_string that appear exactly once."""
+    pass
+`,
+    tests: [
+      { args: ["roshan is automation tester & roshan is ui tester"], expected: "automation & ui" },
+      { args: ["hello world hello python programming world"], expected: "python programming" },
+      { args: ["a a a"], expected: "" },
+      { args: ["unique words here"], expected: "unique words here" },
+    ],
+  },
+  {
+    id: "first-duplicate-element",
+    group: "First Duplicate Element",
+    title: "Find the First Element That Appears More Than Once",
+    description:
+      "Write a function that takes a list and returns the first element that appears more than once, " +
+      "scanning left to right (i.e. the first value you encounter for a second time). Return None if " +
+      "no element repeats.",
+    constraintNote: null,
+    functionName: "first_duplicate",
+    starterCode:
+`def first_duplicate(lst):
+    """Return the first element in lst seen for a second time, or None."""
+    pass
+`,
+    tests: [
+      { args: [[10, 20, 30, 20, 40, 10, 50]], expected: 20 },
+      { args: [[1, 2, 3]], expected: null },
+      { args: [[5, 5, 5]], expected: 5 },
+      { args: [[1, 2, 3, 1, 2]], expected: 1 },
+      { args: [[]], expected: null },
     ],
   },
 ];
