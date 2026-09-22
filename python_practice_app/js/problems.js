@@ -605,4 +605,107 @@ export const problems = [
       { args: [[]], expected: null },
     ],
   },
+  {
+    id: "sum-of-unique-elements",
+    group: "Sum of Unique Elements",
+    title: "Sum of Unique Elements",
+    description:
+      "Write a function that takes a list of numbers and returns the sum of its distinct values " +
+      "(each value counted only once, even if it appears more than once in the list).",
+    constraintNote: null,
+    functionName: "sum_of_unique_elements",
+    starterCode:
+`def sum_of_unique_elements(lst):
+    """Return the sum of the distinct values in lst."""
+    pass
+`,
+    tests: [
+      { args: [[1, 2, 3, 4, 5]], expected: 15 },
+      { args: [[1, 1, 2, 3]], expected: 6 },
+      { args: [[]], expected: 0 },
+      { args: [[5, 5, 5]], expected: 5 },
+      { args: [[-1, -2, -1]], expected: -3 },
+    ],
+  },
+  {
+    id: "smallest-number-builtin",
+    group: "Smallest Number",
+    title: "Find Smallest Number (using min())",
+    description: "Write a function that takes a list of numbers and returns the smallest one.",
+    constraintNote: null,
+    functionName: "find_smallest_number_builtin",
+    starterCode:
+`def find_smallest_number_builtin(lst):
+    """Return the smallest value in lst."""
+    pass
+`,
+    tests: [
+      { args: [[10, 5, 7, 22, 13, 19]], expected: 5 },
+      { args: [[3, 1, 4, 1, 5, 9, 2, 6]], expected: 1 },
+      { args: [[7]], expected: 7 },
+      { args: [[-3, -7, 2]], expected: -7 },
+    ],
+  },
+  {
+    id: "smallest-number-manual",
+    group: "Smallest Number",
+    title: "Find Smallest Number (manual)",
+    description: "Write a function that takes a list of numbers and returns the smallest one.",
+    constraintNote: "Do not use min().",
+    functionName: "find_smallest_number",
+    starterCode:
+`def find_smallest_number(lst):
+    """Return the smallest value in lst, without using min()."""
+    pass
+`,
+    tests: [
+      { args: [[10, 5, 7, 22, 13, 19]], expected: 5 },
+      { args: [[3, 1, 4, 1, 5, 9, 2, 6]], expected: 1 },
+      { args: [[7]], expected: 7 },
+      { args: [[-3, -7, 2]], expected: -7 },
+    ],
+  },
+  {
+    id: "second-smallest-number",
+    group: "Smallest Number",
+    title: "Find Second Smallest Number",
+    description:
+      "Write a function that takes a list of numbers and returns the second-smallest distinct value.",
+    constraintNote: null,
+    functionName: "find_second_smallest_number",
+    starterCode:
+`def find_second_smallest_number(lst):
+    """Return the second-smallest distinct value in lst."""
+    pass
+`,
+    tests: [
+      { args: [[10, 5, 7, 22, 13, 19]], expected: 7 },
+      { args: [[3, 1, 4, 1, 5, 9, 2, 6]], expected: 2 },
+      { args: [[2, 2, 1]], expected: 2 },
+      { args: [[9, 1]], expected: 9 },
+    ],
+  },
+  {
+    id: "needle-in-haystack",
+    group: "Needle in a Haystack",
+    title: "Find the Needle in a Haystack",
+    description:
+      "Write a function that takes a list of words and looks for the word \"needle\" in it. If found, " +
+      "return the string \"Found the needle at position {position}\" using its index in the list. " +
+      "Otherwise, return \"Needle not found in the haystack\".",
+    constraintNote: null,
+    functionName: "find_needle_ifs",
+    starterCode:
+`def find_needle_ifs(words_list):
+    """Return a message reporting the index of "needle" in words_list, or that it wasn't found."""
+    pass
+`,
+    tests: [
+      { args: [["hay", "straw", "needle", "grass"]], expected: "Found the needle at position 2" },
+      { args: [["a", "b", "c"]], expected: "Needle not found in the haystack" },
+      { args: [["needle"]], expected: "Found the needle at position 0" },
+      { args: [[]], expected: "Needle not found in the haystack" },
+      { args: [["x", "y", "needle", "needle"]], expected: "Found the needle at position 2" },
+    ],
+  },
 ];
