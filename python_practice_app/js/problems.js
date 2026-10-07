@@ -542,7 +542,7 @@ export const problems = [
   {
     id: "last-non-repeating-char",
     group: "Last Non-Repeating Character",
-    title: "Last Non-Repeating Character",
+    title: "Last Non-Repeating Character (collect matches)",
     description:
       "Write a function that takes a string and returns the last character (reading left to right) " +
       "that appears exactly once in the string. Return None if every character repeats.",
@@ -557,6 +557,50 @@ export const problems = [
       { args: ["abcdda"], expected: "c" },
       { args: ["aabbcc"], expected: null },
       { args: ["stress"], expected: "e" },
+      { args: [""], expected: null },
+      { args: ["x"], expected: "x" },
+    ],
+  },
+  {
+    id: "last-non-repeating-char-track",
+    group: "Last Non-Repeating Character",
+    title: "Last Non-Repeating Character (track as you go)",
+    description:
+      "Write a function that takes a string and returns the last character (reading left to right) " +
+      "that appears exactly once in the string. Return None if every character repeats.",
+    constraintNote: "Track the last match in a single variable as you scan — don't build a list of matches.",
+    functionName: "last_non_repeating_char_track",
+    starterCode:
+`def last_non_repeating_char_track(input_string):
+    """Return the last character in input_string that appears exactly once, or None."""
+    pass
+`,
+    tests: [
+      { args: ["abcdda"], expected: "c" },
+      { args: ["aabbcc"], expected: null },
+      { args: ["stress"], expected: "e" },
+      { args: [""], expected: null },
+      { args: ["x"], expected: "x" },
+    ],
+  },
+  {
+    id: "first-non-repeating-char",
+    group: "First Non-Repeating Character",
+    title: "First Non-Repeating Character",
+    description:
+      "Write a function that takes a string and returns the first character (reading left to right) " +
+      "that appears exactly once in the string. Return None if every character repeats.",
+    constraintNote: null,
+    functionName: "first_non_repeating_char",
+    starterCode:
+`def first_non_repeating_char(input_string):
+    """Return the first character in input_string that appears exactly once, or None."""
+    pass
+`,
+    tests: [
+      { args: ["swiss"], expected: "w" },
+      { args: ["aabbcc"], expected: null },
+      { args: ["stress"], expected: "t" },
       { args: [""], expected: null },
       { args: ["x"], expected: "x" },
     ],
