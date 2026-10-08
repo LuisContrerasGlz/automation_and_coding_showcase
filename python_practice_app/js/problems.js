@@ -752,4 +752,25 @@ export const problems = [
       { args: [["x", "y", "needle", "needle"]], expected: "Found the needle at position 2" },
     ],
   },
+  {
+    id: "find-missing-number",
+    group: "Find Missing Number",
+    title: "Find the Missing Number",
+    description:
+      "Write a function that takes a list containing every number from 1 to n except one, in any " +
+      "order, and returns the missing number.",
+    constraintNote: null,
+    functionName: "find_missing_number",
+    starterCode:
+`def find_missing_number(nums):
+    """Return the missing number from the sequence 1..n that nums is drawn from."""
+    pass
+`,
+    tests: [
+      { args: [[1, 2, 3, 5, 6]], expected: 4 },
+      { args: [[1, 2, 4, 5, 6]], expected: 3 },
+      { args: [[2, 3, 4, 5, 6]], expected: 1 },
+      { args: [[1, 2, 3, 4, 5]], expected: 6 },
+    ],
+  },
 ];
